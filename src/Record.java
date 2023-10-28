@@ -35,7 +35,25 @@ public class Record {
 
     static String randomDate(){
 
-        int int_year = rand.nextInt(2023 - 2006 + 1) + 2006;
+        int int_year = rand.nextInt(2023 - 2012 + 1) + 2012;
+        int int_month = rand.nextInt(12) + 1;
+        int int_day = rand.nextInt(31) + 1;
+        
+        String day = "", month = "";
+
+        if (int_day < 10){
+            day = "0" + int_day;
+        } else { day = Integer.toString(int_day); }
+
+        if (int_month < 10){
+            month = "0" + int_month;
+        } else { month = Integer.toString(int_month); }
+
+        return int_year + "-" + month + "-" + day;
+    }
+
+    static String randomDate(int maxYear){
+        int int_year = rand.nextInt( (maxYear-1) - 2006 + 1) + 2006;
         int int_month = rand.nextInt(12) + 1;
         int int_day = rand.nextInt(31) + 1;
         

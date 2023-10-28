@@ -6,12 +6,15 @@ public class Connect {
     static Connection mySQL(Session session, String user, String password) throws Exception {
         Connection con = null;
         try {
-            System.out.println(session.isConnected());
+            if (session.isConnected()){
+                System.out.println("Connected to database");
+            }
             int forwardedPort = session.setPortForwardingL(0, "localhost", 3306);
             String url = "jdbc:mysql://localhost:" + forwardedPort + "/csce4350_team2_proj";
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(url, user, password);
+            password = null;
             return con;
 
         } catch (Exception e) {
@@ -27,6 +30,7 @@ public class Connect {
 
             session = new JSch().getSession(user, "celldb-cse.eng.unt.edu", 22);
             session.setPassword(password);
+            password = null;
             session.setConfig("StrictHostKeyChecking", "no");
             session.connect();
             
