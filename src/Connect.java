@@ -7,7 +7,7 @@ public class Connect {
         Connection con = null;
         try {
             if (session.isConnected()){
-                System.out.println("Connected to database");
+                System.out.println("Connected to SSH");
             }
             int forwardedPort = session.setPortForwardingL(0, "localhost", 3306);
             String url = "jdbc:mysql://localhost:" + forwardedPort + "/csce4350_team2_proj";
